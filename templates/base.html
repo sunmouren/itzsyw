@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>{% block title %}{% endblock %}</title>
+		<!-- Bootstrap CSS -->
+    	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+        <link href="{% static 'css/font-awesome.min.css' %}" rel='stylesheet'>
+        <link href="{% static 'css/animate.min.css' %}" rel='stylesheet'>
+    	<link rel="stylesheet" href="{% static 'css/app.css' %}" />
+        {% block css %}
+
+        {% endblock %}
+	</head>
+	<body class="bg-light">
+		<nav class="navbar navbar-expand-xl navbar-light bg-white fixed-top box-shadow">
+			<div class="container">
+				<a class="navbar-brand text-danger" href="{% url 'index' %}"> <strong>IT掌上运维</strong> </a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {% ifequal 'index' current_page %}text-success{% endifequal %}"
+                               href="{% url 'index' %}">
+                                <i class="fa fa-home" aria-hidden="true"></i> 首页
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% ifequal 'services' current_page %}text-success{% endifequal %}"
+                               href="{% url 'services:service-list' %}">
+                                <i class="fa fa-ravelry" aria-hidden="true"></i> 服务
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link {% ifequal 'courses' current_page %}text-success{% endifequal %}"
+                             href="{% url 'courses:course-list' %}">
+                              <i class="fa fa-book" aria-hidden="true"></i> 教程
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a class="nav-link {% ifequal 'abouts' current_page %}text-success{% endifequal %}"
+                             href="{% url 'abouts:about-us' %}">
+                              <i class="fa fa-user-o" aria-hidden="true"></i> 关于我们
+                          </a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <a target="_blank" class="nav-link {% ifequal '' current_page %}text-success{% endifequal %}"
+                             href="https://mp.weixin.qq.com/s/zeq1sTmaPsKt7Bsok0Ldrg">
+                            <i class="fa fa-bandcamp" aria-hidden="true"></i> 软市场
+                        </a>
+                    </form>
+			    </div>
+			</div>
+		</nav>
+
+		<div class="main container" style="margin-top:74px">
+            {% block content %}
+
+            {% endblock %}
+		</div>
+
+        <div class="modal fade" id="orders-modal" tabindex="-1" role="dialog"  aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="review-form">
+                    <div class="card border-0">
+                        <div class="card-body pt-0">
+                            <div class="card-subtitle">
+                                 <div class="form-group">
+                                    <label for="name" class="col-form-label">姓名</label>
+                                    <input class="form-control" id="name">
+                                 </div>
+                                <div class="form-group">
+                                    <label for="contact-way" class="col-form-label">联系方式</label>
+                                    <select class="custom-select" id="contact-way">
+                                        <option value="qq">QQ号</option>
+                                        <option value="tel">手机号码</option>
+                                    </select>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="contact-info" class="col-form-label">联系信息</label>
+                                    <input class="form-control" id="contact-info" placeholder="请对应联系方式填写">
+                                 </div>
+                            </div>
+                            <button data-sid="" class="card-link btn btn-outline-success float-right orders">
+                                确认下单
+                            </button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+		<!-- Optional JavaScript -->
+	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+	    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="{% static 'js/bootstrap-notify.min.js' %}" type="text/javascript"></script>
+        <script type="text/javascript">
+             $.ajaxSetup({
+                data: {csrfmiddlewaretoken: '{{ csrf_token }}' }
+             });
+        </script>
+        <script type="text/javascript" src="{% static 'upload/qiniu.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'upload/md5.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+        {% block js %}
+
+        {% endblock %}
+	</body>
+</html>
