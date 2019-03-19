@@ -95,7 +95,7 @@ class UploadVideo(LoginRequiredMixin, View):
             overview = request.POST.get('overview', None)
             cid = request.POST.get('cid', None)
             url = request.POST.get('srcUrl', None)
-            print(title, cid, overview, url)
+
             if title and overview and cid and url:
                 try:
                     course = Course.objects.get(id=int(cid))
