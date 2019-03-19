@@ -38,9 +38,9 @@
                   <img class="d-block w-100" style="height:400px" src="{{ banner.img_url }}" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h1>{{ banner.title }}</h1>
-{#                        {% if banner.overview %}#}
-{#                            {{ banner.overview }}#}
-{#                        {% endif %}#}
+                        {% if banner.overview %}
+                            {{ banner.overview }}
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
