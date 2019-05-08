@@ -46,6 +46,7 @@ class ServiceDetail(View):
     """
     def get(self, request, sid):
         service = get_object_or_404(Service, id=int(sid))
+        service.add_view_count()
         return render(request, 'service-detail.html', {'service': service})
 
 

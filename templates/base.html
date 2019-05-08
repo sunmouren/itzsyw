@@ -15,8 +15,8 @@
 
         {% endblock %}
 	</head>
-	<body class="bg-light">
-		<nav class="navbar navbar-expand-xl navbar-light bg-white fixed-top box-shadow">
+	<body>
+		<nav class="navbar navbar-expand-xl navbar-light bg-white fixed-top border border-top-0 border-right-0 border-left-0">
 			<div class="container">
 				<a class="navbar-brand text-danger" href="{% url 'index' %}"> <strong>IT掌上运维</strong> </a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
 			</div>
 		</nav>
 
-		<div class="main container" style="margin-top:74px">
+		<div class="main container mb-5" style="margin-top:74px">
             {% block content %}
 
             {% endblock %}

@@ -7,49 +7,56 @@
 
 
 {% block content %}
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'courses:course-list' %}">教程列表</a></li>
-          <li class="breadcrumb-item active" aria-current="page">{{ course }}</li>
-      </ol>
-    </nav>
 
-    {% if request.user.is_authenticated %}
-        <div class="bg-white rounded box-shadow">
-            <button data-toggle="modal" data-target="#modal-upload-video"
-                    class="btn btn-outline-info btn-block border-0">
-                <i class="fa fa-upload"></i> 上传视频
-            </button>
-        </div>
-    {% endif %}
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            {% if request.user.is_authenticated %}
+                <div class="bg-light rounded  mb-3">
+                    <button data-toggle="modal" data-target="#modal-upload-video"
+                            class="btn btn-outline-info btn-block border-0">
+                        <i class="fa fa-upload"></i> 上传视频
+                    </button>
+                </div>
+            {% endif %}
 
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h6 class="border-bottom border-gray pb-2 mb-0">教程详情</h6>
-        <div class="card mt-3 border-0">
-           <img class="card-img-top" src="{{ course.img_url }}" alt="Card image cap">
-          <div class="card-body pl-0 pr-0">
-            <h5 class="card-title">{{ course.title }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">浏览量: {{ course.view_count }}</h6>
-            <p class="card-text">{{ course.overview }}</p>
-          </div>
-       </div>
-    </div>
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h6 class="border-bottom border-gray pb-2 mb-0">教程视频</h6>
-        {% for video in videos %}
-            <div class="media text-muted pt-2">
-              <div class="media-body pb-2 mb-0 lh-125 border-bottom border-gray">
-                  <a href="{{ video.get_absolute_url }}" class="list-group-item list-group-item-action p-2 border-0">
-                      <i class="fa fa-play-circle-o text-danger" aria-hidden="true"></i>
-                      <span class="ml-1">{{ video.title }}</span>
-                      <span class="float-right small text-muted">播放量: {{ video.view_count }}</span>
-                  </a>
-               </div>
+            <div class="p-3 mb-3 bg-light rounded">
+                <div class="d-flex justify-content-md-start align-items-center">
+                    <div>
+                        <a target="_blank" href="{{ course.img_url }}">
+                            <img class="img-warp rounded box-shadow" alt="" src="{{ course.img_url }}?imageView2/1/w/156/h/100/q/75">
+                        </a>
+                    </div>
+                    <div class="ml-3">
+                        <h5>
+                            <a href="{{ course.get_absolute_url }}" class="card-link">
+                                {{ course.title }}
+                            </a>
+                        </h5>
+                        <h6 class="">
+                            {{ course.overview }}
+                        </h6>
+                        <span class="card-link small">
+                            {{ course.get_video_count }} 个视频
+                        </span>
+                        <span class="card-link small">
+                            {{ course.view_count }} 浏览量
+                        </span>
+                        <span class="card-link small">
+                            {{ course.created }}
+                        </span>
+                    </div>
+                </div>
+
             </div>
-        {% empty %}
-            <h5 class="mt-3 text-danger">暂时无内容</h5>
-        {% endfor %}
+
+            <h6 class="mt-4">课程视频</h6>
+            {% for video in videos %}
+                <hr>
+                {% include 'video-item.html' with video=video %}
+            {% endfor %}
+        </div>
     </div>
+
 
     <div class="modal fade bd-example-modal-lg" id="modal-upload-video" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">

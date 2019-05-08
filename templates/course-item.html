@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-md-start align-items-center">
+    <div>
+        <a href="{{ course.get_absolute_url }}">
+            <img class="img-warp rounded box-shadow" alt="" src="{{ course.img_url }}?imageView2/1/w/156/h/100/q/75">
+        </a>
+    </div>
+    <div class="ml-3 text-truncate">
+        <h5>
+            <a href="{{ course.get_absolute_url }}" class="card-link">
+                {{ course.title|truncatechars:40 }}
+            </a>
+        </h5>
+        <h6 class="">
+            {{ course.overview|truncatechars:40 }}
+        </h6>
+        <span class="card-link small">
+            {{ course.get_video_count }} 个视频
+        </span>
+        <span class="card-link small">
+            {{ course.view_count }} 浏览量
+        </span>
+        <span class="card-link small">
+            {{ course.created }}
+        </span>
+    </div>
+</div>

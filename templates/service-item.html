@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-start align-items-center">
+    <div>
+        <img class="rounded" src="{{ service.img_url }}?imageView2/1/w/156/h/100/q/75" alt="">
+    </div>
+    <div>
+        <div class=" ml-3 text-truncate">
+            <h5>
+                <a href="{{ service.get_absolute_url }}" class="card-link">
+                    {{ service.title|truncatechars:40 }}
+                </a>
+            </h5>
+            <h6 class="">
+                {{ service.overview|truncatechars:40 }}
+            </h6>
+            <a href="javascript:void(0)" data-toggle="modal"
+                    data-target="#orders-modal"
+                    data-sid="{{ service.id }}"
+                    data-title="{{ service.title }}"
+                    class=" card-link badge badge-light text-danger">立即下单</a>
+            <span class="card-link small">
+               价格: {{ service.price }} 元
+            </span>
+            <span class="card-link small">
+               {{ service.get_order_count }} 下单
+            </span>
+            <span class="card-link small">
+                {{ service.view_count }} 浏览量
+            </span>
+        </div>
+    </div>
+</div>

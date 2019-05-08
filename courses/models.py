@@ -20,6 +20,13 @@ class Course(models.Model):
     def get_absolute_url(self):
         return reverse('courses:course-detail', args=[self.pk])
 
+    def add_view_count(self):
+        self.view_count += 1
+        self.save()
+
+    def get_video_count(self):
+        return self.video_set.count()
+
     def __str__(self):
         return self.title
 

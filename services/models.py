@@ -14,9 +14,14 @@ class Service(models.Model):
     is_active = models.BooleanField(default=True, verbose_name='是否激活')
 
     def get_absolute_url(self):
+        return reverse('services:service-detail', args=[self.id])
+
+    def add_view_count(self):
         self.view_count += 1
         self.save()
-        return reverse('services:service-detail', args=[self.id])
+
+    def get_order_count(self):
+        return self.orders.count()
 
     class Meta:
         verbose_name = '服务类型'
