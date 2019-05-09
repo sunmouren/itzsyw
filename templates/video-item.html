@@ -1,19 +1,19 @@
 <div class="d-flex justify-content-md-start align-items-center">
-    <div>
-        <a target="_blank" href="{{ video.get_absolute_url }}">
-            <div class="img-warp rounded d-flex justify-content-sm-center align-items-center">
-                <img class="img-warp rounded" src="{{ video.url }}?vframe/jpg/offset/7/w/156/h/100" alt="">
-                <div class="position-absolute rounded" style="background: rgba(0,0,0,.45)">
-                    <span class=" box-shadow p-1">
-                        <i class="fa fa-play-circle-o text-white"></i>
-                    </span>
-                </div>
-            </div>
-        </a>
-    </div>
+{#    <div>#}
+{#        <a target="_blank" href="{{ video.get_absolute_url }}">#}
+{#            <div class="img-warp rounded d-flex justify-content-sm-center align-items-center">#}
+{#                <img class="img-warp rounded" src="{{ video.url }}?vframe/jpg/offset/7/w/156/h/100" alt="">#}
+{#                <div class="position-absolute rounded" style="background: rgba(0,0,0,.45)">#}
+{#                    <span class=" box-shadow p-1">#}
+{#                        <i class="fa fa-play-circle-o text-white"></i>#}
+{#                    </span>#}
+{#                </div>#}
+{#            </div>#}
+{#        </a>#}
+{#    </div>#}
 
 
-    <div class="ml-3 text-truncate">
+    <div class="text-truncate">
         <h5>
             <a href="{{ video.get_absolute_url }}" class="card-link">
                 {{ video.title|truncatechars:40 }}
