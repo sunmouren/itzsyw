@@ -59,8 +59,8 @@
 
 
             <h6 class="mt-4">
-                热门服务
-                <a class="badge badge-light text-danger card-link float-right" href="{% url 'services:service-list' %}">全部服务</a>
+                热门实战
+                <a class="badge badge-light text-danger card-link float-right" href="{% url 'services:service-list' %}">全部实战</a>
             </h6>
             {% get_hot_service_list as service_list %}
             {% for service in service_list %}
