@@ -2,7 +2,7 @@
 
 
 {% block title %}
-    掌维服务
+    掌维实战
 {% endblock %}
 
 
@@ -14,12 +14,12 @@
                 <div class="bg-light rounded  mb-3">
                     <button data-toggle="modal" data-target="#modal-add-service"
                             class="btn btn-outline-info btn-block border-0">
-                        <i class="fa fa-plus"></i> 添加服务
+                        <i class="fa fa-plus"></i> 添加实战
                     </button>
                 </div>
             {% endif %}
 
-             <h6 class="">全部服务</h6>
+             <h6 class="">全部实战</h6>
 
             {% for service in services %}
                 <hr>
@@ -35,7 +35,7 @@
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">添加服务</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">添加实战</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -45,19 +45,19 @@
                 <div class="card-body">
                     <div class="card-subtitle">
                          <div class="form-group">
-                            <label for="title" class="col-form-label">服务标题</label>
+                            <label for="title" class="col-form-label">实战标题</label>
                             <input class="form-control" id="title">
                          </div>
                         <div class="form-group">
-                            <label for="price" class="col-form-label">服务价格(元)</label>
+                            <label for="price" class="col-form-label">实战价格(元)</label>
                             <input class="form-control" id="price">
                          </div>
                         <div class="form-group">
-                            <label for="overview" class="col-form-label">服务概述</label>
+                            <label for="overview" class="col-form-label">实战概述</label>
                             <textarea class="form-control" id="overview" rows="4"></textarea>
                          </div>
                          <div class="form-group">
-                            <label for="img">服务封面图</label>
+                            <label for="img">实战封面图</label>
                             <input type="file" class="form-control-file" id="img" accept="image/*">
                          </div>
                     </div>
